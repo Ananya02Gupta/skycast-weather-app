@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   CLOUDS
+========================= */
+
+@keyframes floatCloud {
+  0% {
+    transform: translateX(-300px);
+  }
+
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+.cloud,
+.cloud2,
+.cloud3 {
+  position: absolute;
+  z-index: 1;
+  user-select: none;
+}
+
+.cloud {
+  font-size: 180px;
+  opacity: 0.8;
+  animation: floatCloud 25s linear infinite;
+}
+
+.cloud2 {
+  font-size: 150px;
+  opacity: 0.6;
+  animation: floatCloud 35s linear infinite;
+}
+
+.cloud3 {
+  font-size: 220px;
+  opacity: 0.7;
+  animation: floatCloud 30s linear infinite;
+}
+
+/* =========================
+   SUN
+========================= */
+
+.sun-container {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  width: 320px;
+  height: 320px;
+  z-index: 0;
+}
+
+.sun-core {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  top: 75px;
+  left: 75px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fff59d,
+    #ffd54f,
+    #ffb300
+  );
+
+  box-shadow:
+    0 0 50px #ffd54f,
+    0 0 100px #ffca28,
+    0 0 160px #ffb300;
+}
+
+.sun-rays {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 215, 64, 0.9) 0deg,
+    rgba(255, 215, 64, 0.9) 8deg,
+    transparent 8deg,
+    transparent 22deg
+  );
+
+  animation: rotateSun 25s linear infinite;
+}
+
+@keyframes rotateSun {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sun {
+  animation: rotateSun 12s linear infinite;
+}
+
+/* =========================
+   SNOW
+========================= */
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(110vh);
+  }
+}
+
+.snow {
+  position: absolute;
+  font-size: 40px;
+  animation: snowFall 8s linear infinite;
+  z-index: 1;
+}
+
+/* =========================
+   RAIN
+========================= */
+
+.rain {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: rgba(255,255,255,0.5);
+  animation: rainFall 1s linear infinite;
+}
+
+@keyframes rainFall {
+  from {
+    transform: translateY(-100px);
+  }
+
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.glass {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* =========================
+   FADE IN
+========================= */
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .sun-container {
+    width: 220px;
+    height: 220px;
+    right: 10px;
+    top: 20px;
+  }
+
+  .sun-core {
+    width: 120px;
+    height: 120px;
+    left: 50px;
+    top: 50px;
+  }
+
+  .cloud {
+    font-size: 120px;
+  }
+
+  .cloud2 {
+    font-size: 100px;
+  }
+
+  .cloud3 {
+    font-size: 140px;
+  }
+}
